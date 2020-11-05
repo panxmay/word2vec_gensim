@@ -51,17 +51,13 @@ if __name__ == '__main__':
 
     sentences = MySentences(data_path)
     model = gensim.models.Word2Vec(sentences,
-                                   size=32,"embedding size
+                                   size=32,
                                    window=5,
                                    min_count=10,
                                    workers=multiprocessing.cpu_count())
-
-    # Create target Directory if don't exist
     dirName = 'data/model'
     if not os.path.exists(dirName):
         os.makedirs(dirName)
-
-    # Save trained model and word embedding
     model.save("data/model/word2vec.model")
     model.wv.save("data/model/wordvectors.kv")
 
